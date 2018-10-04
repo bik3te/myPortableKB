@@ -11,6 +11,6 @@ Similar tools:
 
 
 ## Pwning common web interfaces
-* [Tomcat](guidelines/internal/Tomcat.md)
-* [JBoss](guidelines/internal/Tomcat.md)
-* [Jenkins](guidelines/internal/Jenkins.md)
+* [Tomcat](Tomcat.md)
+* [JBoss](Tomcat.md)
+* [Jenkins](Jenkins.md)

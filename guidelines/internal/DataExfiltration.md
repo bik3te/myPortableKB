@@ -1,4 +1,4 @@
 # Data exfiltration
-* [Dealing with egress rules](guidelines/internal/EgressPorts.md)
-* [Exfiltrate with common protocols](guidelines/internal/ExfilWithCommonProtos.md)
-* [Exfiltrate through services](guidelines/internal/ExfilThroughServices.md)
+* [Dealing with egress rules](EgressPorts.md)
+* [Exfiltrate with common protocols](ExfilWithCommonProtos.md)
+* [Exfiltrate through services](ExfilThroughServices.md)

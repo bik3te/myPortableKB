@@ -42,7 +42,7 @@ $ netstat -ant
 If yes, copy the Address of the proxy.pac file and download it. You will get many subnets there.
 
 ### PowerView
-Using [PowerView](tools/PowerView.md) to enumerate computers with *Get-DomainComputer*:
+Using [PowerView](../../tools/PowerView.md) to enumerate computers with *Get-DomainComputer*:
 ```
 Get-DomainComputer
 Get-DomainComputer -Domain <domain>
@@ -50,7 +50,7 @@ Get-DomainComputer -LDAPFilter <filter>
 Get-DomainComputer -SearchBase <base>  
 ```
 > Filtering with LDAPFilters or SearchBase is really interesting to exclude workstations.
-For this, you can see the section [AD discovery](guidelines/internal/ADDiscovery.md)
+For this, you can see the section [AD discovery](ADDiscovery.md)
 
 ### Guessing
 If you're stuck with a poor /24, you may also try https://github.com/bik3te/Scripts/blob/master/range_guesser.py.
@@ -122,7 +122,7 @@ You can list every discovered services:
 $ ./nmap-parse-output 192.168.0_Quick.xml service-names
 ```
 
-If [these services](guidelines/internal/ServicesEnumeration.md) are present, create a host list to launch enumerating or pwning attacks:
+If [these services](ServicesEnumeration.md) are present, create a host list to launch enumerating or pwning attacks:
 ```
 $ ./nmap-parse-output 192.168.0_Quick.xml http-ports > hosts_www.lst
 $ ./nmap-parse-output 192.168.0_Quick.xml service ftp > hosts_ftp.lst
@@ -143,4 +143,4 @@ $ ./nmap-parse-output 192.168.0_Quick.xml service vnc > hosts_vnc.lst
 3. Can you access to sensitive services ?
 
 ### Services enumeration
-Now it's time to enumerate and hopefully pwn [these services](guidelines/internal/ServicesEnumeration.md)...
+Now it's time to enumerate and hopefully pwn [these services](ServicesEnumeration.md)...

@@ -8,13 +8,13 @@ There are two families of hashes:
 Hashes are not stored in cleartext within the SAM or NTDS.DIT databases. They are encrypted with a BootKey stored within the SYSTEM hive.
 By pulling the various hives (SAM, SYSTEM, SECURITY or NTDS.DIT) from a targeted system into your attacker's laptop, it is possible to perform an offline attack and extract these local or domain user account's hashes.
 
-They can be used to perform [pass-the-hash attacks](guidelines/internal/Pass-the-hash.md) or password cracking to obtain plaintext passwords.
+They can be used to perform [pass-the-hash attacks](Pass-the-hash.md) or password cracking to obtain plaintext passwords.
 
 However, online attacks are also possible with tools like *CrackMapExec*, *Mimikatz*, *Impacket's secretsdump*...
 
 ## Pulling the hives
 You will have to copy these hives on your attacker's system in order to dump the hashes.
-You can perform the following techniques locally (from a cmd / Powershell prompt) or remotely thanks to [this guide](guidelines/internal/LateralMovement.md).
+You can perform the following techniques locally (from a cmd / Powershell prompt) or remotely thanks to [this guide](LateralMovement.md).
 
 ### Server or workstation (SAM / SYSTEM / SECURITY)
 ```

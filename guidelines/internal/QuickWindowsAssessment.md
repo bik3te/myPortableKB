@@ -83,7 +83,7 @@ net localgroup administrators audit_user /add
 ```
 
 ## Performing a quick system safety-checks
-* [Seatbelt](tools/Seatbelt.md)
+* [Seatbelt](../../tools/Seatbelt.md)
 
 ## Escalating privileges
 * PsExec:
@@ -91,14 +91,14 @@ net localgroup administrators audit_user /add
 PsExec.exe -i -s cmd.exe
 ```
 
-* [Privilege escalation](guidelines/internal/PrivEsc.md)
+* [Privilege escalation](PrivEsc.md)
 
 ## Dumping hashes
 
 Dumping Windows hashes is a crucial part of penetration tests. It can be used in
-order to perform [pass-the-hash](guidelines/internal/Pass-the-hash.md),
-[password cracking](guidelines/internal/PasswordCracking.md),
-[password policy analysis](guidelines/internal/PasspolAuditing.md), etc.
+order to perform [pass-the-hash](Pass-the-hash.md),
+[password cracking](PasswordCracking.md),
+[password policy analysis](PasspolAuditing.md), etc.
 
 ### Dumping SAM from linux
 
@@ -124,5 +124,5 @@ And one time again on Linux:
 ```
 
 ### Moar ?
-* To check other [hashdump techniques](guidelines/internal/HashDump.md)
-* To obtain more information about Windows hashes: [Windows hashes](guidelines/internal/WindowsHashes.md)
+* To check other [hashdump techniques](HashDump.md)
+* To obtain more information about Windows hashes: [Windows hashes](WindowsHashes.md)
