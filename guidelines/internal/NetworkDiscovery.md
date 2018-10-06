@@ -23,7 +23,6 @@ $ cat /etc/resolv.conf
 ```
 > Where <dns_suffix> is the ipconfig's value of "Connection-specific DNS Suffix" field
 
-
 4. Check your ARP table:
 ```
 $ ip neigh
@@ -40,6 +39,17 @@ $ netstat -ant
 6. Check if "use automatic configuration script" is checked within your Internet Explorer settings:
 *Internet Options / Connections / LAN Settings*
 If yes, copy the Address of the proxy.pac file and download it. You will get many subnets there.
+
+7. Network sniffing with [tcpdump](../../tools/tcpdump.md) / [Wireshark](../../tools/Wireshark.md)
+
+### NetBIOS discovery
+It's possible to identify many hosts very quickly by scanning for open NetBIOS nameservers on a local or remote TCP/IP network.
+```
+$ wget http://www.unixwiz.net/tools/nbtscan-source-1.0.35.tgz
+$ tar -xvzf nbtscan-source-1.0.35.tgz
+$ make
+$ ./nbtscan <subnet>
+```
 
 ### PowerView
 Using [PowerView](../../tools/PowerView.md) to enumerate computers with *Get-DomainComputer*:

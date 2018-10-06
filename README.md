@@ -11,10 +11,13 @@ and not only for internal pentests - e.g. OSINT, redteam, external pentests, IoT
 - @nikhil_mitt
 - @mattifestation
 - @subTee
+- @byt3bl33d3r
 - @ropnop
 - @sixdub
 - @enigma0x3
 - @Pyrotek3
+- @HackingDave
+- @tifkin_
 - @gentilkiwi
 - @Kevin-Robertson
 - @mysmartlogon
@@ -28,6 +31,10 @@ and not only for internal pentests - e.g. OSINT, redteam, external pentests, IoT
 - @JosephBialek
 - @killswitch_gui
 - @xorrior
+- @Brav0Hax
+- @_wald0
+- @CptJesus
+- lgandx
 - And everyone I forget...
 
 ## Contributions

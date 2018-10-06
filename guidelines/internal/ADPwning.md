@@ -1,6 +1,7 @@
 # AD pwning
 * [Introduction to Active Directory](ActiveDirectoryIntroduction.md)
 * [Introduction to Kerberos](KerberosIntroduction.md)
+* [Typical Active Directory's environment compromission](TypicalADCompromission.md)
 * [Gain network situational awareness on Windows domains](DomainSituationalAwareness.md)
 * [Trusts and Privileges Mapping](TrustsAndPrivsMapping.md)
 * [Credential Replay Attacks (cleartexts, pass-the-hash, pass-the-ticket, token manipulation, etc.)](ReplayAttacks.md)
