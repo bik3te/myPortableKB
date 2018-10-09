@@ -6,7 +6,7 @@ You only need one domain account.
 1. Copy it to the system
 2. Download / run it from https://live.sysinternals.com/ADExplorer.exe
 3. Load it into memory from Microsoft's site via UNC path:
-Type **\\live.sysinternals.com\Tools\ADExplorer.exe** within the Run box or Explorer!
+Type **\\\live.sysinternals.com\Tools\ADExplorer.exe** within the Run box or Explorer!
 
 ## Profit
 1. You can now easily browse the directory in order to find interesting OUs, groups, computers, users, etc.
@@ -22,7 +22,9 @@ Type **\\live.sysinternals.com\Tools\ADExplorer.exe** within the Run box or Expl
 * [etc.](https://docs.microsoft.com/en-us/windows/desktop/adschema/attributes-all).
 
 > Many attributes in Active Directory have a data type (syntax) called Integer8. These 64-bit numbers (8 bytes) often represent time in 100-nanosecond intervals. If the Integer8 attribute is a date - i.e. pwdLastSet - AD Explorer will automatically make the conversion into readable one.
-If the attribute is an interval - i.e. lockoutDuration - you will have to [convert it](https://github.com/bik3te/Scripts/blob/master/Int8_to_interval.py)
+If the attribute is an interval - i.e. lockoutDuration - you will have to [convert it](https://github.com/bik3te/Scripts/blob/master/Int8_to_interval.py).
+
+So do not forget the [password policy analysis](../guidelines/internal/PasspolAuditing.md)...
 
 ## Nice tricks
 1. You can take a snapshot in order to perform your discovery without anymore querying DCs or running [Net commands](../../tools/NetCommands.md):
