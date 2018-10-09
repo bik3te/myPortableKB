@@ -9,7 +9,20 @@ You only need one domain account.
 Type **\\live.sysinternals.com\Tools\ADExplorer.exe** within the Run box or Explorer!
 
 ## Profit
-You can now easily browse the directory in order to find interesting OUs, groups, computers, users, password policy, etc.
+1. You can now easily browse the directory in order to find interesting OUs, groups, computers, users, etc.
+2. You can also check the password policy:
+* [lockoutDuration](https://docs.microsoft.com/en-us/windows/desktop/adschema/a-lockoutduration);
+* [lockOutObservationWindow](https://docs.microsoft.com/en-us/windows/desktop/adschema/a-lockoutobservationwindow);
+* [lockoutThreshold](https://docs.microsoft.com/en-us/windows/desktop/adschema/a-lockoutthreshold);
+* [maxPwdAge](https://docs.microsoft.com/en-us/windows/desktop/adschema/a-maxpwdage);
+* [minPwdAge](https://docs.microsoft.com/en-us/windows/desktop/adschema/a-minpwdage);
+* [minPwdLength](https://docs.microsoft.com/en-us/windows/desktop/adschema/a-minpwdlength);
+* [pwdHistoryLength](https://docs.microsoft.com/en-us/windows/desktop/adschema/a-pwdhistorylength);
+* [pwdProperties](https://docs.microsoft.com/en-us/windows/desktop/adschema/a-pwdproperties);
+* [etc.](https://docs.microsoft.com/en-us/windows/desktop/adschema/attributes-all).
+
+> Many attributes in Active Directory have a data type (syntax) called Integer8. These 64-bit numbers (8 bytes) often represent time in 100-nanosecond intervals. If the Integer8 attribute is a date - i.e. pwdLastSet - AD Explorer will automatically make the conversion into readable one.
+If the attribute is an interval - i.e. lockoutDuration - you will have to [convert it](https://github.com/bik3te/Scripts/blob/master/Int8_to_interval.py)
 
 ## Nice tricks
 1. You can take a snapshot in order to perform your discovery without anymore querying DCs or running [Net commands](../../tools/NetCommands.md):
