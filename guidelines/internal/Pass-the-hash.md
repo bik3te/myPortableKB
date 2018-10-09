@@ -1,4 +1,6 @@
 # How-To Pass-the-hash (PtH)
+NetNTLM is a Windows challenge-response protocol that is mainly used where Kerberos is not supported. In NetNTLM, the server sends to the client a random 8-byte nonce as a challenge, and the client calculates a response that processes the challenge with the NTLM hash as the key, which is the MD4 hash of the user's password. Because the NTLM hash is the key to calculate the response, the victim's cleartext password is not required to authenticate, hence retrieving the NTLM hash is almost equivalent to stealing a plain text password.
+
 You can use many many tools to perform PtH. The only required things are:
 * A username (and its domain if not local...)
 * Its NTLM hash
