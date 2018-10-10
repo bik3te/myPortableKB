@@ -9,6 +9,13 @@ You only need one domain account.
 Type **\\\live.sysinternals.com\Tools\ADExplorer.exe** within the Run box or Explorer!
 
 ## Profit
+0. You can take a snapshot in order to perform your discovery without anymore querying DCs or running [Net commands](../../tools/NetCommands.md):
+* From GUI: **FILE/Create Snapshot...**
+* From command line:
+```
+> ADExplorer.exe -snapshot "" <domain_snapshot.dat>
+> \\live.sysinternals.com\Tools\ADExplorer.exe -snapshot "" <domain_snapshot.dat>
+```
 1. You can now easily browse the directory in order to find interesting OUs, groups, computers, users, etc.
 2. You can also check the password policy:
 * [lockoutDuration](https://docs.microsoft.com/en-us/windows/desktop/adschema/a-lockoutduration);
@@ -26,16 +33,7 @@ If the attribute is an interval - i.e. lockoutDuration - you will have to [conve
 
 So do not forget the [password policy analysis](../guidelines/internal/PasspolAuditing.md)...
 
-## Nice tricks
-1. You can take a snapshot in order to perform your discovery without anymore querying DCs or running [Net commands](../../tools/NetCommands.md):
-* From GUI: **FILE/Create Snapshot...**
-* From command line:
-```
-> ADExplorer.exe -snapshot "" <domain_snapshot.dat>
-> \\live.sysinternals.com\Tools\ADExplorer.exe -snapshot "" <domain_snapshot.dat>
-```
-
-2. Hunt for passwords
+3. You can hunt for passwords
 You should look for the following LDAP attributes:
 - userPassword
 - unicodePwd
@@ -65,3 +63,17 @@ If you find an encoded password, just use a script like this one to get the clea
 ```
 >>> ''.join([chr(int(_)) for _ in '66 84 86 80 ...'.split()])
 ```
+
+4. You can look for special accounts whose passwords never expire (service accounts?? :)
+**Search/Search Container...**
+```
+  -> Class: User -- user
+  -> Attribute: sAMAccountName
+  -> Relation: not empty
+  -> Add
+
+  -> Class: User -- user
+  -> Attribute: userAccountControl
+  -> Relation: is
+  -> Value: 66048
+  -> Add

