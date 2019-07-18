@@ -35,7 +35,7 @@ git config --global https.sslVerify false
 - /etc/pip.conf :
 ```
 [global]
-proxy = 10.30.59.219:8080
+proxy = <ip_or_proxy.tld>:<port>
 trusted-host = pypi.python.org
                pypi.org
                files.pythonhosted.org
